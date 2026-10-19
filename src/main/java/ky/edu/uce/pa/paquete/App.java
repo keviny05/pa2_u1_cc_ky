@@ -17,9 +17,7 @@ public class App {
             MenuRestaurante menu = new MenuRestaurante();
             PedidoService pedidoService = new PedidoService();
 
-            System.out.println("=================================");
             System.out.println("   BIENVENIDO A SABOR EXPRESS");
-            System.out.println("=================================");
             menu.mostrarMenu();
 
             System.out.print("Nombre del cliente: ");
