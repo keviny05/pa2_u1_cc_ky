@@ -1,62 +1,38 @@
 
 package ky.edu.uce.pa.paquete;
 
-import java.util.Scanner;
-
-import ky.edu.uce.pa.paquete.restaurante.MenuRestaurante;
 import ky.edu.uce.pa.paquete.restaurante.Pedido;
 import ky.edu.uce.pa.paquete.restaurante.PedidoService;
 import ky.edu.uce.pa.paquete.restaurante.Plato;
 
 
 
-
 public class App {
     public static void main(String[] args) {
-        try (Scanner scanner = new Scanner(System.in)) {
-            MenuRestaurante menu = new MenuRestaurante();
-            PedidoService pedidoService = new PedidoService();
+    
+        PedidoService pedidoService = new PedidoService();
 
-            System.out.println("   BIENVENIDO A SABOR EXPRESS");
-            menu.mostrarMenu();
+        try {
+  
+            Plato platoDirecto = new Plato(
+                "Hamburguesa Clásica", 
+                "Carne, queso, lechuga y tomate", 
+                5.50
+            );
 
-            System.out.print("Nombre del cliente: ");
-            String cliente = scanner.nextLine().trim();
 
-            System.out.print("Numero del plato que desea: ");
-            int opcion;
-            try {
-                opcion = Integer.parseInt(scanner.nextLine().trim());
-            } catch (NumberFormatException e) {
-                System.out.println("Error: ingrese un numero de plato valido.");
-                return;
-            }
+            Pedido pedido = new Pedido(
+                "Carlos Pérez",           
+                platoDirecto,             
+                2,                        
+                "carlos.perez@email.com"  
+            );
 
-            Plato plato = menu.buscarPlato(opcion);
-            if (plato == null) {
-                System.out.println("Error: el plato seleccionado no existe.");
-                return;
-            }
 
-            System.out.print("Cantidad: ");
-            int cantidad;
-            try {
-                cantidad = Integer.parseInt(scanner.nextLine().trim());
-            } catch (NumberFormatException e) {
-                System.out.println("Error: ingrese una cantidad numerica.");
-                return;
-            }
+            pedidoService.realizar(pedido);
 
-            System.out.print("Correo electronico: ");
-            String correo = scanner.nextLine().trim();
-
-            try {
-                Pedido pedido = new Pedido(cliente, plato, cantidad, correo);
-                pedidoService.realizar(pedido);
-                System.out.println("\nGracias por comprar en Sabor Express.");
-            } catch (IllegalArgumentException e) {
-                System.out.println("No se pudo registrar el pedido: " + e.getMessage());
-            }
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error en el pedido: " + e.getMessage());
         }
     }
 }

@@ -6,8 +6,6 @@ public class Plato {
     private final double precio;
 
     public Plato(String nombre, String descripcion, double precio) {
-        if (nombre == null || nombre.isBlank()) throw new IllegalArgumentException("El nombre es obligatorio.");
-        if (precio < 0) throw new IllegalArgumentException("El precio no puede ser negativo.");
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.precio = precio;
