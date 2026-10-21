@@ -1,4 +1,4 @@
-package ky.edu.uce.pa.pedidos;
+package ky.edu.uce.pa.paquete.pedidos;
 
 public class Pedido {
     private String cliente;

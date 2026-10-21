@@ -1,4 +1,4 @@
-package ky.edu.uce.pa.pedidos;
+package ky.edu.uce.pa.paquete.pedidos;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Singleton;

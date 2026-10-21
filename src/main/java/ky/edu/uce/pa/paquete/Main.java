@@ -5,8 +5,8 @@ import io.quarkus.runtime.Quarkus;
 import io.quarkus.runtime.QuarkusApplication;
 import io.quarkus.runtime.annotations.QuarkusMain;
 import jakarta.inject.Inject;
-import ky.edu.uce.pa.pedidos.Pedido;
-import ky.edu.uce.pa.pedidos.PedidoService;
+import ky.edu.uce.pa.paquete.pedidos.Pedido;
+import ky.edu.uce.pa.paquete.pedidos.PedidoService;
 
 @QuarkusMain
 public class Main implements QuarkusApplication {
