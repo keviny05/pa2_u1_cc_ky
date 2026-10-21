@@ -1,11 +1,13 @@
 package     ky.edu.uce.pa.paquete.restaurante;
 
-import java.util.Locale;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 
+@ApplicationScoped
 public class PedidoService {
-    private final MailService mailService;
 
-    public PedidoService() { this.mailService = new MailService(); }
+    @Inject
+    MailService mailService;
 
     public void realizar(Pedido pedido) {
         System.out.println("\n PEDIDO REGISTRADO ");
@@ -20,6 +22,7 @@ public class PedidoService {
         String cuerpo = String.format(
             "Hola %s, recibimos tu pedido de %d unidad(es) de %s. Total: $%.2f. Gracias por elegir Sabor Express.",
             pedido.getCliente(), pedido.getCantidad(), pedido.getPlato().getNombre(), pedido.getTotal());
+
         mailService.enviar(pedido.getCorreo(), asunto, cuerpo);
     }
 }

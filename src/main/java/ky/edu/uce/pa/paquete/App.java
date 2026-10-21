@@ -1,38 +1,33 @@
 
 package ky.edu.uce.pa.paquete;
 
+
+import io.quarkus.runtime.Quarkus;
+import io.quarkus.runtime.QuarkusApplication;
+import io.quarkus.runtime.annotations.QuarkusMain;
+import jakarta.inject.Inject;
 import ky.edu.uce.pa.paquete.restaurante.Pedido;
 import ky.edu.uce.pa.paquete.restaurante.PedidoService;
 import ky.edu.uce.pa.paquete.restaurante.Plato;
 
+@QuarkusMain
+public class App implements QuarkusApplication {
 
+    @Inject
+    PedidoService pedidoService;
 
-public class App {
     public static void main(String[] args) {
-    
-        PedidoService pedidoService = new PedidoService();
+        System.out.println("Iniciando la aplicacion Quarkus...");
+        Quarkus.run(App.class, args);
+    }
 
-        try {
-  
-            Plato platoDirecto = new Plato(
-                "Hamburguesa Clásica", 
-                "Carne, queso, lechuga y tomate", 
-                5.50
-            );
+    @Override
+    public int run(String... args) throws Exception {
+        Plato plato = new Plato("Ceviche", "Camaron con limon y cebolla", 8.50);
+        Pedido pedido = new Pedido("Juan", plato, 2, "juan@gmail.com");
 
+        pedidoService.realizar(pedido);
 
-            Pedido pedido = new Pedido(
-                "Carlos Pérez",           
-                platoDirecto,             
-                2,                        
-                "carlos.perez@email.com"  
-            );
-
-
-            pedidoService.realizar(pedido);
-
-        } catch (IllegalArgumentException e) {
-            System.out.println("Error en el pedido: " + e.getMessage());
-        }
+        return 0;
     }
 }
