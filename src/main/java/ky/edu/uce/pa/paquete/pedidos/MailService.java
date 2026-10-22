@@ -1,11 +1,13 @@
 package ky.edu.uce.pa.paquete.pedidos;
 
+import io.quarkus.arc.Unremovable;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Singleton;
 
 @ApplicationScoped //Delego el control al contenedor ArC de CDI para que gestione el ciclo de vida de la clase
 //@RequestScoped
 //@Singleton 
+@Unremovable 
 public class MailService {
     public void enviar(String correo, String asunto, String cuerpo){
         System.out.println("Enviando correo a: "+ correo);
