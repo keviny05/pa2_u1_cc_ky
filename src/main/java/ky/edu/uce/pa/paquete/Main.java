@@ -29,6 +29,7 @@ public class Main implements QuarkusApplication {
             15000.0,
             "juan@gmail.com"
         );
+        pedido.setTelefono("1234567890");
 
         pedidoService.realizar(pedido);
 
