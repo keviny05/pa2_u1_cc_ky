@@ -15,4 +15,21 @@ public class SMSService implements Notificacion {
         System.out.println("SMS enviado con exito");
     }
 
+    @Override
+    public Integer getCantidad() {
+        return null;
+    }
+
+    @Override
+    public void setCantidad(Integer cantidad) {
+    }
+
+    @Override
+    public String getNombre() {
+        return null;
+    }
+
+    @Override
+    public void setNombre(String nombre) {}
+
 }

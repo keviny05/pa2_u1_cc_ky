@@ -26,12 +26,15 @@ public class PedidoService {
         System.out.println(" " + pedido.getTotal());
         System.out.println(" " + pedido.getCorreo());
 
-        String cuerpo = "Estimado " + pedido.getCliente() + ", su pedido de" +
+        String cuerpo = "Estimado " + pedido.getCliente() + ", su pedido de " +
                 pedido.getProducto() + " por un total de $" + pedido.getTotal() +
                 " ha salido con exito";
 
         //Notificacion de pedido por correo electronico
         this.notificacionCorreo.enviar(pedido.getCorreo(), cuerpo);
+        this.notificacionCorreo.setCantidad(this.notificacionCorreo.getCantidad() + 1);
+        System.out.println("Cantidad de correos enviados: " + this.notificacionCorreo.getCantidad());
+        this.notificacionCorreo.setNombre("Correo de Pedidos");
 
         //Notificacion de pedido por SMS
         this.notificacionSMS.enviar(pedido.getTelefono(), cuerpo);
