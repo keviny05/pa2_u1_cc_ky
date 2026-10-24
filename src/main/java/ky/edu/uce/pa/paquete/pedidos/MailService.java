@@ -40,6 +40,4 @@ public class MailService implements Notificacion {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-
-
 }
