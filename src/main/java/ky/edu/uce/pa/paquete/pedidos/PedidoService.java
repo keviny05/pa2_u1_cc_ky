@@ -6,11 +6,13 @@ import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import jakarta.inject.Singleton;
 import ky.edu.uce.pa.paquete.interceptors.Auditoria;
+import ky.edu.uce.pa.paquete.interceptors.NotificarSMS;
 
 @ApplicationScoped
 public class PedidoService {
 
     @Auditoria 
+    @NotificarSMS
     public String realizar(Pedido pedido) {
         System.out.println("Realizado pedido...");
         System.out.println("Cliente: " + pedido.getCliente());
