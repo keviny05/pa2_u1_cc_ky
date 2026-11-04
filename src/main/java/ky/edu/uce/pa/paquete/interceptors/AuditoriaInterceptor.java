@@ -19,6 +19,7 @@ public class AuditoriaInterceptor {
     @AroundInvoke 
     public Object interceptar(InvocationContext context) throws Exception {
 
+
         //Todo lo que esta arriba se ejecuta antes de que se ejecute el metodo interceptado
         Object resultado = context.proceed();
         System.out.println("Retorno: " + resultado);
