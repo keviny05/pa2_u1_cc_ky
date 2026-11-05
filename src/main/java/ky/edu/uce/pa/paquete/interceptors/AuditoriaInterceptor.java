@@ -2,6 +2,7 @@ package ky.edu.uce.pa.paquete.interceptors;
 
 import java.lang.reflect.Parameter;
 
+import jakarta.annotation.Priority;
 import jakarta.inject.Inject;
 import jakarta.interceptor.AroundInvoke;
 import jakarta.interceptor.Interceptor;
@@ -10,7 +11,8 @@ import ky.edu.uce.pa.paquete.pedidos.AuditoriaService;
 import ky.edu.uce.pa.paquete.pedidos.Pedido;
 
 @Auditoria
-@Interceptor 
+@Interceptor
+@Priority(Interceptor.Priority.APPLICATION + 2)
 public class AuditoriaInterceptor {
     
     @Inject 
@@ -18,7 +20,7 @@ public class AuditoriaInterceptor {
 
     @AroundInvoke 
     public Object interceptar(InvocationContext context) throws Exception {
-
+        System.out.println("Interceptando el metodo: " + context.getMethod().getName() + " para auditar la informacion del pedido");
 
         //Todo lo que esta arriba se ejecuta antes de que se ejecute el metodo interceptado
         Object resultado = context.proceed();
@@ -41,9 +43,7 @@ public class AuditoriaInterceptor {
         String correo = pedido.getCorreo();
 
         this.auditoriaService.guardarEnLaBaseDeDatos(cliente, total, correo);
-
-
-        System.out.println("Metodo luego de que se ejecuta el metodo interceptado");
+        
         return resultado;
     }
 

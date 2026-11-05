@@ -1,6 +1,5 @@
 package ky.edu.uce.pa.paquete.pedidos;
 
-import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Named;
 import jakarta.inject.Singleton;
 

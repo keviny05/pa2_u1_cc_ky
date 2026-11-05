@@ -1,18 +1,25 @@
 package ky.edu.uce.pa.paquete.pedidos;
 
+import jakarta.annotation.Priority;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import jakarta.inject.Singleton;
 import ky.edu.uce.pa.paquete.interceptors.Auditoria;
+import ky.edu.uce.pa.paquete.interceptors.EnviarMail;
+import ky.edu.uce.pa.paquete.interceptors.EnviarSMS;
+import ky.edu.uce.pa.paquete.interceptors.MedirTiempo;
 
 @ApplicationScoped
 public class PedidoService {
 
     @Auditoria 
+    @MedirTiempo
+    @EnviarSMS 
+    @EnviarMail 
     public String realizar(Pedido pedido) {
-        long tiempoInicio = System.currentTimeMillis();
+        
         try {
             Thread.sleep(1500);
         } catch (InterruptedException e) {
@@ -26,10 +33,6 @@ public class PedidoService {
         System.out.println("Correo: " + pedido.getCorreo());
         System.out.println("Teléfono: " + pedido.getTelefono());
         System.out.println("Pedido realizado con exito");
-                long tiempoFin = System.currentTimeMillis();
-        long tiempoEjecucion = tiempoFin - tiempoInicio;
-        System.out.println("Tiempo de ejecución del método realizar: " + tiempoEjecucion + " ms");
-
 
         return "Pedido realizado con exito";
 
