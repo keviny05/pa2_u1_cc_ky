@@ -10,6 +10,7 @@ import ky.edu.uce.pa.paquete.interceptors.Auditoria;
 import ky.edu.uce.pa.paquete.interceptors.EnviarMail;
 import ky.edu.uce.pa.paquete.interceptors.EnviarSMS;
 import ky.edu.uce.pa.paquete.interceptors.MedirTiempo;
+import ky.edu.uce.pa.paquete.interceptors.TiempoDeInicio;
 
 @ApplicationScoped
 public class PedidoService {
@@ -18,6 +19,7 @@ public class PedidoService {
     @MedirTiempo
     @EnviarSMS 
     @EnviarMail 
+    @TiempoDeInicio 
     public String realizar(Pedido pedido) {
         
         try {
