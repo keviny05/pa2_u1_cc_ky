@@ -1,35 +1,24 @@
 package ky.edu.uce.pa.paquete.pedidos;
 
 import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.inject.Inject;
-import jakarta.inject.Named;
+import ky.edu.uce.pa.paquete.extensiones.NotificacionExtension;
 
 @ApplicationScoped 
 public class CompraService {
     
-    @Inject 
-    @Named ("mail")
-    private Notificacion notificacionCorreo;
-
-    public void realizar(Compra compra) {
+    public void realizar(Compra compra, NotificacionExtension notificacionExtension) {
         System.out.println("Realizado compra...");
         System.out.println(" " + compra.getCliente());
         System.out.println(" " + compra.getProducto());
         System.out.println(" " + compra.getTotal());
         System.out.println(" " + compra.getCorreo());
+        System.out.println("Compra realizada con exito");
 
-        String cuerpo = "Estimado " + compra.getCliente() + ", su compra de " +
-                compra.getProducto() + " por un total de $" + compra.getTotal() +
-                " ha salido con exito";
+        //aqui voy a programar el envio de la notificacion
+        notificacionExtension.enviar("Su pedido ha sido realizado con exito", compra.getCliente());
+        
 
-        //Notificacion de compra por correo electronico
-        this.notificacionCorreo.enviar(compra.getCorreo(), cuerpo);
-        this.notificacionCorreo.setCantidad(this.notificacionCorreo.getCantidad() + 1);
 
-        System.out.println("Cantidad de correos enviados: " + this.notificacionCorreo.getCantidad());
-        System.out.println("Nombre: " + this.notificacionCorreo.getNombre());
-
-    
     }
 
 }

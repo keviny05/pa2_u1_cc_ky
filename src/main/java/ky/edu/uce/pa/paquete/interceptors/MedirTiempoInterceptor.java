@@ -1,13 +1,10 @@
 package ky.edu.uce.pa.paquete.interceptors;
 
-import java.lang.reflect.Parameter;
 
 import jakarta.annotation.Priority;
-import jakarta.inject.Inject;
 import jakarta.interceptor.AroundInvoke;
 import jakarta.interceptor.Interceptor;
 import jakarta.interceptor.InvocationContext;
-import ky.edu.uce.pa.paquete.pedidos.AuditoriaService;
 
 @MedirTiempo 
 @Interceptor

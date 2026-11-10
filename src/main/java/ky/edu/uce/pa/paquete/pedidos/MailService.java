@@ -1,8 +1,5 @@
 package ky.edu.uce.pa.paquete.pedidos;
 
-import io.quarkus.arc.Unremovable;
-import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.enterprise.context.Dependent;
 import jakarta.inject.Named;
 import jakarta.inject.Singleton;
 
